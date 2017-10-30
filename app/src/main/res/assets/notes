@@ -1,0 +1,5 @@
+Tip 1 Asset文件夹和res/raw文件夹的区别;
+A. 前者单个文件不能超过1MB,存放的文件不会被预编译（即不会产生索引到R.java，访问需要用AssetManager类），可存放一些图片，html，js, css 等文件;
+
+B. 后者可以放超过4MB的，会预编译，产生一个R.raw.xxx,例如;
+    mUri = Uri.parse("android.resource://" + getPackageName() + "/"+ R.raw.demodave);
