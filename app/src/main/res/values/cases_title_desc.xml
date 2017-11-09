@@ -4,6 +4,7 @@
     <array name="mainItems">
         <item>RecyclerView$$实现item拖住的拖拽功能</item>
         <item>httpOK$$联网的多线程管理</item>
+        <item>XML解析$$使用XmlPull解析</item>
     </array>
     <string name="casess"></string>
 </resources>

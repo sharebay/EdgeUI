@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--选择下拉列表的顺序为：厂站类型，电压等级，装置类型，装置套别，然后才是处理情况-->
+<FaultJobs desc="消缺作业管控">
+    <FaultJob
+        stationType="常规站"
+        vol = "0"
+        deviceType = "母差保护"
+        deviceSetDiff = "单套"
+        titel = "更换电源插件"
+        desc = "母差保护显示异常、报通讯中断、失电告警及运行灯异常等现象可能是由电源插件故障引起，需要更换电源插件。">
+        <OperateSteps desc = "安全措施">
+            <item>a) 第一（二）套母差保护改信号</item>
+            <item>b) 断开装置直流电源空开</item>
+        </OperateSteps>
+        <OperateSteps desc = "校验内容">
+            <item>a) 逆变电源自启动性能</item>
+            <item>b) 直流电源拉合试验</item>
+            <item>c) 装置失电告警检测</item>
+            <item>d) 保护装置的通电自检</item>
+        </OperateSteps>
+    </FaultJob>
+
+    <FaultJob
+        stationType="常规站11"
+        vol = "011"
+        deviceType = "母差保护11"
+        deviceSetDiff = "单套11"
+        titel = "更换电源插件11"
+        desc = "母差保护显示异常、报通讯中断、失电告警及运行灯异常等现象可能是由电源插件故障引起，需要更换电源插件。11">
+        <OperateSteps desc = "安全措施">
+            <item>a) 第一（二）套母差保护改信号11</item>
+            <item>b) 断开装置直流电源空开11</item>
+        </OperateSteps>
+        <OperateSteps desc = "校验内容">
+            <item>a) 逆变电源自启动性能11</item>
+            <item>b) 直流电源拉合试验11</item>
+            <item>c) 装置失电告警检测11</item>
+            <item>d) 保护装置的通电自检11</item>
+        </OperateSteps>
+    </FaultJob>
+</FaultJobs>

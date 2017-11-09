@@ -3,3 +3,6 @@ A. 前者单个文件不能超过1MB,存放的文件不会被预编译（即不�
 
 B. 后者可以放超过4MB的，会预编译，产生一个R.raw.xxx,例如;
     mUri = Uri.parse("android.resource://" + getPackageName() + "/"+ R.raw.demodave);
+
+
+Tip 2 XML解析分为四种

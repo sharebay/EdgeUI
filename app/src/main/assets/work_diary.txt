@@ -2,4 +2,7 @@
 in order to begin in my desire: to myself standard Coding style
 
 @20171031
-1.使用RecyclerView实现线性和网状布局的拖拽功能；s
+1.使用RecyclerView实现线性和网状布局的拖拽功能;
+
+@20171109
+1.学习XML的解析方法之XmlPull解析;
