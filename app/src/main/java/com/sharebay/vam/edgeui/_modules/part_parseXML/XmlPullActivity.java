@@ -118,7 +118,7 @@ public class XmlPullActivity extends AppCompatActivity {
 
                         }
                         if (tag.equalsIgnoreCase(TAG_OPERATE_STEPS)){
-                            Log.e(TAG, "initData: " + ((null!=faultJob)?"空":"非空"));
+                            Log.e(TAG, "initData: " + ((null!=faultJob)?"非空":"空"));
                             if (faultJob != null){
                                 Log.e(TAG, "END_TAG->TAG_OPERATE_STEPS: "+"gy.Here");
                                 faultJob.setOperateAftSteps(pres);
