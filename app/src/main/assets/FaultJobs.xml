@@ -20,7 +20,7 @@
         </OperateSteps>
     </FaultJob>
 
-    <FaultJob
+    <!--<FaultJob
         stationType="常规站11"
         vol = "011"
         deviceType = "母差保护11"
@@ -37,5 +37,5 @@
             <item>c) 装置失电告警检测11</item>
             <item>d) 保护装置的通电自检11</item>
         </OperateSteps>
-    </FaultJob>
+    </FaultJob>-->
 </FaultJobs>

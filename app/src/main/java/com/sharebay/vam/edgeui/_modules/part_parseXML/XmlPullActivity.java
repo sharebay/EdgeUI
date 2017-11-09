@@ -65,9 +65,10 @@ public class XmlPullActivity extends AppCompatActivity {
             //获取事件类别：开始文档、开始标签、结束标签等
             int eventType = xmlParser.getEventType();
             while (eventType!=XmlPullParser.END_DOCUMENT){
+                tag = xmlParser.getName();
                 switch (eventType){
                     case XmlPullParser.START_TAG:
-                        tag = xmlParser.getName();
+
                         if (tag.equalsIgnoreCase(TAG_FAULT_JOB)){
                             //实例化
                             faultJob= new FaultJob();
@@ -97,7 +98,7 @@ public class XmlPullActivity extends AppCompatActivity {
                             }
                         }
                         if (tag.equalsIgnoreCase(TAG_OPERATE_STEPS_ITEM)&& null!=faultJob){
-                            String text = xmlParser.nextText();//看下源码的注释就可以知道 这里除了获取到下个字符串还会执行next()方法
+                            String text = "123"/*xmlParser.nextText()*/;//看下源码的注释就可以知道 这里除了获取到下个字符串还会执行next()方法
                             Log.e(TAG, "OperateSteps_item->item: "+text);
                             if (curPos == POS_0){
                                 pres.add(text);
@@ -116,7 +117,8 @@ public class XmlPullActivity extends AppCompatActivity {
                             }
 
                         }
-                        if (tag.equalsIgnoreCase(TAG_OPERATE_STEPS)&& null!=faultJob){
+                        if (tag.equalsIgnoreCase(TAG_OPERATE_STEPS)){
+                            Log.e(TAG, "initData: " + ((null!=faultJob)?"空":"非空"));
                             if (faultJob != null){
                                 Log.e(TAG, "END_TAG->TAG_OPERATE_STEPS: "+"gy.Here");
                                 faultJob.setOperateAftSteps(pres);
