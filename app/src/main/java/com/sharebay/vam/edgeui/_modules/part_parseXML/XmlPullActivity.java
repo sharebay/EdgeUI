@@ -35,6 +35,7 @@ public class XmlPullActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xml_pull);
         initData();
+        Log.e(TAG, "onCreate: "+faultJobs.get(1).getOperateAftSteps().get(1));
         initView();
     }
 
@@ -98,7 +99,7 @@ public class XmlPullActivity extends AppCompatActivity {
                             }
                         }
                         if (tag.equalsIgnoreCase(TAG_OPERATE_STEPS_ITEM)&& null!=faultJob){
-                            String text = "123"/*xmlParser.nextText()*/;//看下源码的注释就可以知道 这里除了获取到下个字符串还会执行next()方法
+                            String text = xmlParser.nextText() ;//看下源码的注释就可以知道 这里除了获取到下个字符串还会执行next()方法
                             Log.e(TAG, "OperateSteps_item->item: "+text);
                             if (curPos == POS_0){
                                 pres.add(text);
@@ -121,10 +122,14 @@ public class XmlPullActivity extends AppCompatActivity {
                             Log.e(TAG, "initData: " + ((null!=faultJob)?"非空":"空"));
                             if (faultJob != null){
                                 Log.e(TAG, "END_TAG->TAG_OPERATE_STEPS: "+"gy.Here");
-                                faultJob.setOperateAftSteps(pres);
-                                faultJob.setOperateAftSteps(afts);
-                                pres = null;
-                                afts = null;
+                                if (faultJob.getOperatePreSteps()==null){
+                                    faultJob.setOperatePreSteps(pres);
+                                    pres = null;
+                                }
+                                if (faultJob.getOperateAftSteps()==null){
+                                    faultJob.setOperateAftSteps(afts);
+                                    afts = null;
+                                }
                             }
 
                         }
@@ -134,12 +139,14 @@ public class XmlPullActivity extends AppCompatActivity {
                 }
                 eventType=xmlParser.next();
             }
-            //Log.e(TAG, "initData: "+faultJobs.get(0).toString());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
 
+        for (FaultJob job: faultJobs){
+            Log.e(TAG, "initData: "+job.toString());
+        }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--选择下拉列表的顺序为：厂站类型，电压等级，装置类型，装置套别，然后才是处理情况-->
+<!--选择下拉列表的顺序为：厂站类型，电压等级(kV)，装置类型，装置套别，然后才是处理情况-->
 <FaultJobs desc="消缺作业管控">
     <FaultJob
         stationType="常规站"
@@ -33,7 +33,7 @@
         </OperateSteps>
         <OperateSteps desc = "校验内容">
             <item>a) 逆变电源自启动性能11</item>
-            <item>b) 直流电源拉合试验11</item>
+            <item>b) 直流电源拉合试验123123123</item>
             <item>c) 装置失电告警检测11</item>
             <item>d) 保护装置的通电自检11</item>
         </OperateSteps>
