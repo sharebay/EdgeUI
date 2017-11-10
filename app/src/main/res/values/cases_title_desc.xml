@@ -7,4 +7,10 @@
         <item>XML解析$$使用XmlPull解析</item>
     </array>
     <string name="casess"></string>
+    <array name="kinds">
+        <item>分类1</item>
+        <item>分类2</item>
+        <item>分类3</item>
+        <item>分类4</item>
+    </array>
 </resources>

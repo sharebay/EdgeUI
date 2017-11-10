@@ -1,14 +1,19 @@
 package com.sharebay.vam.edgeui._modules.part_parseXML;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.Xml;
+import android.view.View;
+import android.widget.Toast;
 
 import com.sharebay.vam.edgeui.R;
 import com.sharebay.vam.edgeui.beans.FaultJob;
+import com.sharebay.vam.edgeui.commons.recyclerview.CommonAdapterHelper.RecyclerViewCommonAdapter;
+import com.sharebay.vam.edgeui.commons.recyclerview.CommonAdapterHelper.ViewHolder;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -21,12 +26,16 @@ import java.util.List;
 public class XmlPullActivity extends AppCompatActivity {
 
     private static final String TAG = "XmlPullActivity";
+    private Context mCtx;
     RecyclerView rvXmlParseResult;
+    RecyclerViewCommonAdapter adapter;
+
+    FaultJobsFilter filter ;
+
     String xmlPath = "FaultJobs.xml";
     private static final String TAG_FAULT_JOB = "FaultJob";
     private static final String TAG_OPERATE_STEPS = "OperateSteps";
     private static final String TAG_OPERATE_STEPS_ITEM = "item";
-
 
     List<FaultJob> faultJobs = new ArrayList<>();
 
@@ -34,15 +43,34 @@ public class XmlPullActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xml_pull);
+        mCtx = this;
         initData();
         Log.e(TAG, "onCreate: "+faultJobs.get(1).getOperateAftSteps().get(1));
         initView();
     }
 
     private void initView() {
+        filter = (FaultJobsFilter) findViewById(R.id.include1);
+
         rvXmlParseResult = (RecyclerView) findViewById(R.id.rvXmlParseResult);
         rvXmlParseResult.setLayoutManager(new LinearLayoutManager(this));
 
+        adapter = new RecyclerViewCommonAdapter<FaultJob>(mCtx,R.layout.job_item_layout,faultJobs) {
+            @Override
+            public void convert(ViewHolder holder, FaultJob job) {
+                holder.setText(R.id.tv_index,holder.getAdapterPosition()+1+"");
+                holder.setText(R.id.tv_title,job.getTitle());
+                holder.setOnItemClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //跳转到显示作业缺陷的详情页面
+                        Toast.makeText(mContext, "1", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
+
+        rvXmlParseResult.setAdapter(adapter);
 
     }
 
@@ -77,14 +105,14 @@ public class XmlPullActivity extends AppCompatActivity {
                                     + ",vol=" + xmlParser.getAttributeValue(null,"vol")
                                     + ",deviceType=" + xmlParser.getAttributeValue(null,"deviceType")
                                     + ",deviceSetDiff=" + xmlParser.getAttributeValue(null,"deviceSetDiff")
-                                    + ",titel=" + xmlParser.getAttributeValue(null,"titel")
+                                    + ",title=" + xmlParser.getAttributeValue(null,"title")
                                     + ",desc=" + xmlParser.getAttributeValue(null,"desc")
                             );
 
                             faultJob.setStationType(xmlParser.getAttributeValue(null,"stationType"));
                             faultJob.setVol(Integer.parseInt(xmlParser.getAttributeValue(null,"vol")));
                             faultJob.setDeviceSetDiff(xmlParser.getAttributeValue(null,"deviceSetDiff"));
-                            faultJob.setTitle(xmlParser.getAttributeValue(null,"titel"));
+                            faultJob.setTitle(xmlParser.getAttributeValue(null,"title"));
                             faultJob.setDesc(xmlParser.getAttributeValue(null,"desc"));
                         }
                         if (tag.equalsIgnoreCase(TAG_OPERATE_STEPS)&& null!=faultJob){
