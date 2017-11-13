@@ -22,6 +22,8 @@
         </activity>
         <activity android:name="._modules.part_parseXML.XmlPullActivity">
         </activity>
+        <activity android:name="._modules.part_recyclerview_contacts.ContactsListActivity">
+        </activity>
     </application>
 
 </manifest>
