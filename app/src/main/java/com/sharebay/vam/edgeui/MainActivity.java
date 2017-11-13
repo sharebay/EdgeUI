@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.sharebay.vam.edgeui._modules.part_parseXML.XmlPullActivity;
 import com.sharebay.vam.edgeui._modules.part_recyclerview.DroppableRecyclerActivity;
+import com.sharebay.vam.edgeui._modules.part_recyclerview_contacts.ContactsListActivity;
 import com.sharebay.vam.edgeui.commons.listview.CommonAdapterHelper.ListViewCommonAdapter;
 import com.sharebay.vam.edgeui.commons.listview.CommonAdapterHelper.ViewHolder;
 import com.sharebay.vam.edgeui.utils.Utils;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case 2:
                 Utils.startActivity(this, XmlPullActivity.class);
+            case 3:
+                Utils.startActivity(this, ContactsListActivity.class);
         }
     }
 

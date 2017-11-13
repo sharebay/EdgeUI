@@ -48,8 +48,9 @@ public class DroppableRecyclerActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0,0,0,"列表显示");
-        menu.add(0,1,0,"网格显示");
+        /*menu.add(0,0,0,"列表显示");
+        menu.add(0,1,0,"网格显示");*/
+        getMenuInflater().inflate(R.menu.gymenu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

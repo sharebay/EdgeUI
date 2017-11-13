@@ -5,6 +5,7 @@
         <item>RecyclerView$$实现item拖住的拖拽功能</item>
         <item>httpOK$$联网的多线程管理</item>
         <item>XML解析$$使用XmlPull解析</item>
+        <item>recyclerView$$Android使用RecyclerView实现仿微信联系人列表参考：http://blog.csdn.net/gesanri/article/details/52071113</item>
     </array>
     <string name="casess"></string>
     <array name="kinds">
@@ -13,4 +14,29 @@
         <item>分类3</item>
         <item>分类4</item>
     </array>
+    <!--电压等级-->
+    <string-array name="DYDJ">
+        <item>1000</item>
+        <item>750</item>
+        <item>500</item>
+        <item>330</item>
+        <item>220</item>
+        <item>110</item>
+        <item>66</item>
+        <item>35</item>
+        <item>20</item>
+        <item>10</item>
+    </string-array>
+
+    <!--厂站类型-->
+    <string-array name="CZLX">
+        <item>智能站</item>
+        <item>常规站</item>
+    </string-array>
+    <!--套别-->
+    <string-array name="TB">
+        <item>单套</item>
+        <item>A套</item>
+        <item>B套</item>
+    </string-array>
 </resources>

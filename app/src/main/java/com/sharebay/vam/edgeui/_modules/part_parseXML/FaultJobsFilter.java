@@ -45,7 +45,7 @@ public class FaultJobsFilter extends LinearLayout {
 
     private void init(Context context) {
         this.mCtx = context;
-        LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.jobs_filter,this);
 
         initData();
@@ -65,17 +65,28 @@ public class FaultJobsFilter extends LinearLayout {
         sp_operation = findViewById(R.id.sp_operation);
     }
 
+    /*
+    * 前4个spn的下拉数据都是从数据库中获取到的。
+    * 第5个spn是通过上边4个的数据查询出来的FalutJob的title信息，具体的详情需要通过
+    * 同时，第5个spinner切换的时候，下边的列表也需要切换显示
+    * */
     private void bindData() {
+        sp1.setAdapter(getArrayAdapter(R.array.CZLX));
+        sp2.setAdapter(getArrayAdapter(R.array.DYDJ));
+        sp3.setAdapter(getArrayAdapter(R.array.kinds));
+        sp4.setAdapter(getArrayAdapter(R.array.kinds));
+
+
+        //sp_operation.setAdapter(arrAdpter);
+    }
+
+    private ArrayAdapter getArrayAdapter(int resId){
         ArrayAdapter arrAdpter = new ArrayAdapter(
                 mCtx,
-                android.R.layout.simple_list_item_1,//R.layout.spinner_text_to_right,//android.R.layout.simple_list_item_1,
-                mCtx.getResources().getStringArray(R.array.kinds));
+                R.layout.simple_list_item_1_gy,//R.layout.spinner_text_to_right,//android.R.layout.simple_list_item_1,
+                mCtx.getResources().getStringArray(resId));
         arrAdpter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-        sp1.setAdapter(arrAdpter);
-        sp2.setAdapter(arrAdpter);
-        sp3.setAdapter(arrAdpter);
-        sp4.setAdapter(arrAdpter);
-        sp_operation.setAdapter(arrAdpter);
+                R.layout.simple_spinner_dropdown_item_gy);//android.R.layout.simple_spinner_dropdown_item
+        return arrAdpter;
     }
 }
